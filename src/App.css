@@ -49,6 +49,13 @@ select {
   font-size: 1rem;
 }
 
+.amount {
+  width: 5rem;
+}
+.amount::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 input[type="submit"] {
   color: white;
   font-weight: 700;
