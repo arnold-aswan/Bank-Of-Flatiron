@@ -18,6 +18,12 @@ function App() {
       .then((data) => setTransaction(data));
   }, []);
 
+  const handleDelete = (id) => {
+    const remTransactions = transaction.filter((item) => id !== item.id);
+    console.log(remTransactions);
+    setTransaction(remTransactions);
+  };
+
   const handleChange = (search) => {
     setSearch(search);
     const updatedList = [...transaction];
@@ -45,8 +51,20 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newTransaction = [...transaction, formData];
-    console.log(newTransaction);
     setTransaction(newTransaction);
+    // try {
+    //   fetch("http://localhost:3000/transactions", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(newTransaction),
+    //   })
+    //     .then((r) => r.json())
+    //     .then((data) => setTransaction(newTransaction));
+    // } catch (error) {
+    //   console.log(error + "something went wrong");
+    // }
   };
 
   const filteredData = filtered.map((trans) => {
@@ -56,6 +74,11 @@ function App() {
         <td>{trans.description}</td>
         <td>{trans.category}</td>
         <td>{trans.amount}</td>
+        <td>
+          <button className="delete-btn" onClick={() => handleDelete(trans.id)}>
+            Delete
+          </button>
+        </td>
       </tr>
     );
   });
@@ -67,6 +90,11 @@ function App() {
         <td>{trans.description}</td>
         <td>{trans.category}</td>
         <td>{trans.amount}</td>
+        <td>
+          <button className="delete-btn" onClick={() => handleDelete(trans.id)}>
+            Delete
+          </button>
+        </td>
       </tr>
     );
   });
