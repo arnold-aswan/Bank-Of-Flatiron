@@ -5,7 +5,12 @@ function App() {
   const [transaction, setTransaction] = useState([]);
   const [search, setSearch] = useState("");
   const [filtered, setFiltered] = useState([]);
-  const [submittedData, setSubmittedData] = useState([]);
+  const [formData, setFormData] = useState({
+    date: "",
+    description: "",
+    category: "",
+    amount: 0,
+  });
 
   useEffect(() => {
     fetch("http://localhost:3000/transactions")
@@ -14,9 +19,7 @@ function App() {
   }, []);
 
   const handleChange = (search) => {
-    // setSearch(event.target.value);
     setSearch(search);
-    // console.log(search);
     const updatedList = [...transaction];
     if (search !== "") {
       const filter = updatedList.filter(
@@ -30,7 +33,13 @@ function App() {
     }
   };
 
-  const handleFormData = (e) => {};
+  const handleFormData = (e) => {
+    setFormData((formData) => ({
+      ...formData,
+      [e.target.name]: e.target.value,
+    }));
+    console.log(formData);
+  };
 
   const handleSubmit = (e) => {};
 
@@ -71,7 +80,12 @@ function App() {
       <form onSubmit={handleSubmit}>
         <div className="form-control">
           <label htmlFor="date">Date</label>
-          <input type="date" name="date" onChange={handleFormData} />
+          <input
+            type="date"
+            name="date"
+            value={formData.date}
+            onChange={handleFormData}
+          />
         </div>
 
         <div className="form-control">
@@ -80,16 +94,29 @@ function App() {
             type="text"
             name="description"
             placeholder="description..."
+            value={formData.description}
             onChange={handleFormData}
           />
         </div>
         <div className="form-control">
           <label htmlFor="category">Category</label>
-          <select name="category" onChange={handleFormData}>
-            {transaction.map((item) => {
-              return <option key={item.id}>{item.category}</option>;
-            })}
-          </select>
+          <input
+            type="text"
+            name="category"
+            value={formData.category}
+            onChange={handleFormData}
+          />
+        </div>
+
+        <div className="form-control">
+          <label htmlFor="amount">Amount</label>
+          <input
+            className="amount"
+            type="number"
+            name="amount"
+            value={formData.amount}
+            onChange={handleFormData}
+          />
         </div>
         <input className="btn" type="submit" />
       </form>
