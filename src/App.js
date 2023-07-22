@@ -58,6 +58,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>FlatIron Bank</h1>
       <input
         className="search"
         type="text"
@@ -68,21 +69,29 @@ function App() {
       <h1>{search}</h1>
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor="date">Date</label>
-        <input type="date" name="date" onChange={handleFormData} />
-        <label htmlFor="description">Description</label>
-        <input
-          type="text"
-          name="description"
-          placeholder="description..."
-          onChange={handleFormData}
-        />
-        <select onChange={handleFormData}>
-          {transaction.map((item) => {
-            return <option key={item.id}>{item.category}</option>;
-          })}
-        </select>
-        <input type="submit" />
+        <div className="form-control">
+          <label htmlFor="date">Date</label>
+          <input type="date" name="date" onChange={handleFormData} />
+        </div>
+
+        <div className="form-control">
+          <label htmlFor="description">Description</label>
+          <input
+            type="text"
+            name="description"
+            placeholder="description..."
+            onChange={handleFormData}
+          />
+        </div>
+        <div className="form-control">
+          <label htmlFor="category">Category</label>
+          <select name="category" onChange={handleFormData}>
+            {transaction.map((item) => {
+              return <option key={item.id}>{item.category}</option>;
+            })}
+          </select>
+        </div>
+        <input className="btn" type="submit" />
       </form>
 
       <table>
