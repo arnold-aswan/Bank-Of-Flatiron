@@ -9,7 +9,7 @@ function App() {
     date: "",
     description: "",
     category: "",
-    amount: 0,
+    amount: "",
   });
 
   useEffect(() => {
@@ -34,11 +34,12 @@ function App() {
   };
 
   const handleFormData = (e) => {
-    setFormData((formData) => ({
+    const { name, value } = e.target;
+    const newValue = name === "amount" ? Number(value) : value;
+    setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
-    }));
-    console.log(formData);
+      [name]: newValue,
+    });
   };
 
   const handleSubmit = (e) => {};
