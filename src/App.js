@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FiTrash2 } from "react-icons/fi";
 import "./App.css";
 
 function App() {
@@ -76,7 +77,7 @@ function App() {
         <td>{trans.amount}</td>
         <td>
           <button className="delete-btn" onClick={() => handleDelete(trans.id)}>
-            Delete
+            <FiTrash2 style={{ fontSize: "1.2rem" }} />
           </button>
         </td>
       </tr>
@@ -92,7 +93,7 @@ function App() {
         <td>{trans.amount}</td>
         <td>
           <button className="delete-btn" onClick={() => handleDelete(trans.id)}>
-            Delete
+            <FiTrash2 style={{ fontSize: "1.2rem" }} />
           </button>
         </td>
       </tr>
@@ -162,6 +163,7 @@ function App() {
             <th>Description</th>
             <th>Category</th>
             <th>Amount</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>{search.length > 1 ? filteredData : nonFilteredData}</tbody>
