@@ -42,7 +42,12 @@ function App() {
     });
   };
 
-  const handleSubmit = (e) => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newTransaction = [...transaction, formData];
+    console.log(newTransaction);
+    setTransaction(newTransaction);
+  };
 
   const filteredData = filtered.map((trans) => {
     return (
