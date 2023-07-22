@@ -30,3 +30,32 @@ table td {
   font-size: 1rem;
   min-width: 20rem;
 }
+
+form {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-control input,
+select {
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+}
+
+input[type="submit"] {
+  color: white;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  margin-top: 1.7rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #04aa6d;
+  cursor: pointer;
+}
