@@ -19,6 +19,12 @@ function TransactionForm({
     e.preventDefault();
     const newTransaction = [...transaction, formData];
     setTransaction(newTransaction);
+    setFormData({
+      date: "",
+      description: "",
+      category: "",
+      amount: "",
+    });
     // try {
     //   fetch("http://localhost:3000/transactions", {
     //     method: "POST",
@@ -33,6 +39,7 @@ function TransactionForm({
     //   console.log(error + "something went wrong");
     // }
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="form-control">
@@ -42,6 +49,7 @@ function TransactionForm({
           name="date"
           value={formData.date}
           onChange={handleFormData}
+          required
         />
       </div>
 
@@ -53,6 +61,7 @@ function TransactionForm({
           placeholder="description..."
           value={formData.description}
           onChange={handleFormData}
+          required
         />
       </div>
       <div className="form-control">
@@ -62,6 +71,7 @@ function TransactionForm({
           name="category"
           value={formData.category}
           onChange={handleFormData}
+          required
         />
       </div>
 
@@ -73,6 +83,7 @@ function TransactionForm({
           name="amount"
           value={formData.amount}
           onChange={handleFormData}
+          required
         />
       </div>
       <input className="btn" type="submit" />
