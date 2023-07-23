@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 function TransactionForm({
   setFormData,
@@ -6,17 +7,42 @@ function TransactionForm({
   transaction,
   setTransaction,
 }) {
+  const [formErrors, setFormErrors] = useState({});
+
   const handleFormData = (e) => {
     const { name, value } = e.target;
     const newValue = name === "amount" ? Number(value) : value;
     setFormData({
       ...formData,
+      id: uuidv4(),
       [name]: newValue,
     });
   };
 
+  const formValidation = () => {
+    const errors = {};
+    if (formData.date === "") {
+      errors.date = "Enter Transaction Date.";
+    }
+    if (formData.description === "") {
+      errors.description = "Enter Transaction Description";
+    }
+    if (formData.category === "") {
+      errors.category = "Enter Category Description.";
+    }
+    if (formData.amount === "") {
+      errors.amount = "Enter Transaction Amount";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    // formValidation();
     const newTransaction = [...transaction, formData];
     setTransaction(newTransaction);
     setFormData({
@@ -51,6 +77,7 @@ function TransactionForm({
           onChange={handleFormData}
           required
         />
+        {/* {formErrors.date && <p className="error">{formErrors.date}</p>} */}
       </div>
 
       <div className="form-control">
@@ -63,6 +90,7 @@ function TransactionForm({
           onChange={handleFormData}
           required
         />
+        {/* {formErrors.description && (<p className="error">{formErrors.description}</p>)} */}
       </div>
       <div className="form-control">
         <label htmlFor="category">Category</label>
@@ -73,6 +101,7 @@ function TransactionForm({
           onChange={handleFormData}
           required
         />
+        {/* {formErrors.category && <p className="error">{formErrors.category}</p>} */}
       </div>
 
       <div className="form-control">
@@ -85,6 +114,7 @@ function TransactionForm({
           onChange={handleFormData}
           required
         />
+        {/* {formErrors.amount && <p className="error">{formErrors.amount}</p>} */}
       </div>
       <input className="btn" type="submit" />
     </form>
