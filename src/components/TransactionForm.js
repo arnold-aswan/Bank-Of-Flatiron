@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-function TransactionForm({
-  setFormData,
-  formData,
-  transaction,
-  setTransaction,
-}) {
+function TransactionForm({ transaction, setTransaction }) {
+  const [formData, setFormData] = useState({
+    date: "",
+    description: "",
+    category: "",
+    amount: "",
+  });
   const [formErrors, setFormErrors] = useState({});
 
   const handleFormData = (e) => {
@@ -19,26 +20,25 @@ function TransactionForm({
     });
   };
 
-  const formValidation = () => {
-    const errors = {};
-    if (formData.date === "") {
-      errors.date = "Enter Transaction Date.";
-    }
-    if (formData.description === "") {
-      errors.description = "Enter Transaction Description";
-    }
-    if (formData.category === "") {
-      errors.category = "Enter Category Description.";
-    }
-    if (formData.amount === "") {
-      errors.amount = "Enter Transaction Amount";
-    }
+  //   const formValidation = () => {
+  //     if (formData.date === "") {
+  //       formErrors.date = "Enter Date.";
+  //     }
+  //     if (formData.description === "") {
+  //       formErrors.description = "Enter Description";
+  //     }
+  //     if (formData.category === "") {
+  //       formErrors.category = "Enter Description.";
+  //     }
+  //     if (formData.amount === "") {
+  //       formErrors.amount = "Enter Amount";
+  //     }
 
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-      return;
-    }
-  };
+  //     if (Object.keys(formErrors).length > 0) {
+  //       setFormErrors(formErrors);
+  //       return;
+  //     }
+  //   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
