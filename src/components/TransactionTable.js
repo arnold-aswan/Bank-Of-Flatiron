@@ -28,34 +28,24 @@ function TransactionTable({
     );
   };
 
-  const sort = (data, description) => {
-    let sorted = data.sort(function (a, b) {
-      if (a.desc < b.desc) {
+  const sort = (arr) => {
+    arr.sort(function (a, b) {
+      if (a.description < b.description) {
         return -1;
       }
-      if (a.desc > b.desc) {
+      if (a.description > b.description) {
         return 1;
       }
       return 0;
     });
   };
-  filtered = filtered.sort(function (a, b) {
-    if (a.description < b.description) {
-      return -1;
-    }
-    if (a.description > b.description) {
-      return 1;
-    }
-    return 0;
-  });
 
-  //   const filteredData2 = sort(filtered, data.category).map((data) => {
-  //     return table(data);
-  //   });
+  sort(filtered);
   const filteredData = filtered.map((data) => {
     return table(data);
   });
 
+  sort(transaction);
   const nonFilteredData = transaction.map((data) => {
     return table(data);
   });
@@ -75,7 +65,7 @@ function TransactionTable({
         <tbody>{search.length > 0 ? filteredData : nonFilteredData}</tbody>
       </table>
       <h3 className="error-search">
-        {filteredData.length < 1 && "Search query not found."}
+        {/* {filteredData.length < 1 ? "Search query not found." : null} */}
       </h3>
     </div>
   );
