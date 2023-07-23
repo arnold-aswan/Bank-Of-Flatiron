@@ -10,9 +10,11 @@ Bank Of FlatIron is a web application that enables users to:
 - Delete a transaction which will remove it from the table.
 - Sort transactions alphabetically by description.
 
-## Screenshot
+## Live Demo
 
-[bank3-2023-07-23_20.05.44.webm](https://github.com/arnold-aswan/Bank-Of-Flatiron/assets/135007872/0055df0a-4ce8-45a2-98ae-28916dc6e823)
+https://preeminent-brigadeiros-ede5fc.netlify.app/
+
+## Screenshot
 
 ![Screenshot from 2023-07-23 19-42-37](https://github.com/arnold-aswan/Bank-Of-Flatiron/assets/135007872/1c28c5f6-f96c-41b5-9bfd-5e905df063d8)
 
