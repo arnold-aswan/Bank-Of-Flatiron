@@ -9,12 +9,6 @@ function App() {
   const [transaction, setTransaction] = useState([]);
   const [search, setSearch] = useState("");
   const [filtered, setFiltered] = useState([]);
-  const [formData, setFormData] = useState({
-    date: "",
-    description: "",
-    category: "",
-    amount: "",
-  });
 
   useEffect(() => {
     fetch("http://localhost:3000/transactions")
@@ -27,15 +21,13 @@ function App() {
       <h1>FlatIron Bank</h1>
 
       <SearchBar
-        setFiltered={setFiltered}
         search={search}
         setSearch={setSearch}
         transaction={transaction}
+        setFiltered={setFiltered}
       />
 
       <TransactionForm
-        setFormData={setFormData}
-        formData={formData}
         transaction={transaction}
         setTransaction={setTransaction}
       />
