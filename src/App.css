@@ -81,7 +81,10 @@ input[type="submit"]:hover {
   padding: 0.4rem 0.7rem;
   cursor: pointer;
 }
-
+.error {
+  font-size: 0.8rem;
+  color: red;
+}
 .error-search {
   color: red;
 }
