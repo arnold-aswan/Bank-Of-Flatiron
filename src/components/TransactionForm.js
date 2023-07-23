@@ -8,7 +8,7 @@ function TransactionForm({ transaction, setTransaction }) {
     category: "",
     amount: "",
   });
-  const [formErrors, setFormErrors] = useState({});
+  // const [formErrors, setFormErrors] = useState({});
 
   const handleFormData = (e) => {
     const { name, value } = e.target;
